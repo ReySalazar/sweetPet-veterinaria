@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Recepcionista</title>
+	
+	<!--JQUERY-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script 
+		src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script 
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	
+	<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" href="static/css/vista-usuarios.css"
+		th:href="@{/css/vista-usuarios.css}">
+	<!-- DATA TABLE -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
+	        $('#listaTurnos').DataTable();
+	    } );
+	</script>
+		<script type="text/javascript">
+	    $(document).ready(function() {
+	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
+	        $('#listaVeterinarios').DataTable();
+	    } );
+	</script>
+		</script>
+		<script type="text/javascript">
+	    $(document).ready(function() {
+	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
+	        $('#listaProductos').DataTable();
+	    } );
+	</script>
+		</script>
+		</script>
+		<script type="text/javascript">
+	    $(document).ready(function() {
+	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
+	        $('#listaMascotas').DataTable();
+	    } );
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="mx-auto col-sm-10 main-section" id="myTab" role="tablist">
+			<ul class="nav nav-tabs justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link active" id="list-tab" data-toggle="tab" href="#lista-productos" role="tab" aria-controls="list" aria-selected="false">Productos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="form-tab" data-toggle="tab" href="#lista-veterinarios" role="tab" aria-controls="form" aria-selected="true">Veterinarios</a>				   	
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="form-tab" data-toggle="tab" href="#lista-mascotas" role="tab" aria-controls="form" aria-selected="true">Pets</a>				   	
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="list-tab" data-toggle="tab" href="#form-turno" role="tab" aria-controls="list" aria-selected="false">Otorgar turno</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="list-tab" data-toggle="tab" href="#lista-turnos" role="tab" aria-controls="list" aria-selected="false">Turnos</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="lista-productos" role="tabpanel" aria-labelledby="list-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Lista de productos</h4>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table id="listaProductos" class="table table-bordered table-hover table-striped">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Descripción</th>
+											<th scope="col">Precio</th>
+											<th scope="col">Categoría</th>>
+											<th>Venta</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Alimento balanceado</td>
+											<td>950.00</td>
+											<td>regular</td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></a>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Antipulgas</td>
+											<td>500.00</td>
+											<td>medicamentos</td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="lista-veterinarios" role="tabpanel" aria-labelledby="list-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Lista de veterinarios</h4>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table id="listaVeterinarios" class="table table-bordered table-hover table-striped">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Nombre</th>
+											<th scope="col">Apellido</th>
+											<th scope="col">Especialidad</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Miguel</td>
+											<td>Campos</td>
+											<td>caninos</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Arturo</td>
+											<td>Saenz</td>
+											<td>felinos</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="lista-mascotas" role="tabpanel" aria-labelledby="list-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Sweet Pet</h4>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table id="listaMascotas" class="table table-bordered table-hover table-striped">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col"></th>
+											<th scope="col">Mascota</th>
+											<th scope="col">Tipo</th>
+											<th scope="col">Dueño</th>
+											<th scope="col">Contacto</th>
+											<th scope="col">Acción</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Boby</td>
+											<td>Canino</td>
+											<td>Juan Cruz</td>
+											<td>1169125071</td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Chester</td>
+											<td>Felino</td>
+											<td>Abel Pintos</td>
+											<td>1158968585</td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="form-turno" role="tabpanel" aria-labelledby="form-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Otorgar turno</h4>
+						</div>
+						<div class="card-body">
+							<form class="form" role="form" autocomplete="off">
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Mascota</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" >
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Veterinario</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" >
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Especialidad</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" >
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Fecha</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Hora inicial</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Hora final</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text">
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-lg-12 text-center">
+										<input type="reset" class="btn btn-secondary" value="Cancelar">
+										<input type="button" class="btn btn-primary" value="Guardar cambios">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="lista-turnos" role="tabpanel" aria-labelledby="list-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Lista de turnos</h4>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table id="listaTurnos" class="table table-bordered table-hover table-striped">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Mascota</th>
+											<th scope="col">Veterinario/a</th>
+											<th scope="col">Especialidad</th>
+											<th scope="col">Fecha</th>
+											<th scope="col">Inicio</th>
+											<th scope="col">Final</th>
+											<th scope="col">Acción</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Boby</td>
+											<td>Miguel Campos</td>
+											<td>Canino</td>
+											<td>01/02/2022</td>
+											<td>10:00</td>
+											<td>10:30</td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Chester</td>
+											<td>Arturo Saenz</td>
+											<td>Felino</td>
+											<td>22/01/2022</td>
+											<td>11:00</td>
+											<td>11:30</td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
