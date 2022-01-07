@@ -1,0 +1,30 @@
+							<div class="table-responsive">
+								<table id="listaTurnos" class="table table-bordered table-hover table-striped">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Mascota</th>
+											<th scope="col">Veterinario/a</th>
+											<th scope="col">Especialidad</th>
+											<th scope="col">Fecha</th>
+											<th scope="col">Inicio</th>
+											<th scope="col">Final</th>
+											<th scope="col">Acción</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="turno: ${listaTurnos}">
+											<td th:text="${turno.id}"></td>
+											<td th:text="${turno.mascota}"></td>
+											<td th:text="${turno.veterinario}"></td>
+											<td th:text="${turno.especialidad}"></td>
+											<td th:text="${turno.fecha}"></td>
+											<td th:text="${turno.inicio}"></td>
+											<td th:text="${turno.fin}"></td>
+											<td>
+												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>

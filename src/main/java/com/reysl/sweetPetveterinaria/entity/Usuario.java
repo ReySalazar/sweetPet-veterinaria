@@ -68,7 +68,7 @@ public class Usuario implements Serializable {
 	@JoinTable(name = "usuario_roles",
 			joinColumns = @JoinColumn(name = "usuario_id"),
 			inverseJoinColumns = @JoinColumn(name = "rol_id")) //busca cual es el Id del objeto rol y lo asigna como clave foranea
-	private Set<Rol> rolSet;  // Crea, una colección de roles(sin valores repetidos)
+	private Set<Rol> roles;  // Crea, una colección de roles(sin valores repetidos)
 	
 	public Usuario() {
 		super();
@@ -135,17 +135,25 @@ public class Usuario implements Serializable {
 		this.confirmarPassword = confirmarPassword;
 	}
 
-	public Set<Rol> getRol() {
-		return rolSet;
+	public String getEspecialidad() {
+		return especialidad;
 	}
 
-	public void setRoleSet(Set<Rol> rolSet) {
-		this.rolSet = rolSet;
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
+
+	public Set<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Rol> roles) {
+		this.roles = roles;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellido, confirmarPassword, email, id, nombre, password, rolSet, usuario);
+		return Objects.hash(apellido, confirmarPassword, email, especialidad, id, nombre, password, roles, usuario);
 	}
 
 	@Override
@@ -158,16 +166,17 @@ public class Usuario implements Serializable {
 			return false;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(apellido, other.apellido) && Objects.equals(confirmarPassword, other.confirmarPassword)
-				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
-				&& Objects.equals(nombre, other.nombre) && Objects.equals(password, other.password)
-				&& Objects.equals(rolSet, other.rolSet) && Objects.equals(usuario, other.usuario);
+				&& Objects.equals(email, other.email) && Objects.equals(especialidad, other.especialidad)
+				&& Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(password, other.password) && Objects.equals(roles, other.roles)
+				&& Objects.equals(usuario, other.usuario);
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario + ", email="
-				+ email + ", password=" + password + ", confirmarPassword=" + confirmarPassword + ", roleSet=" + rolSet
-				+ "]";
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario
+				+ ", email=" + email + ", especialidad=" + especialidad + ", password=" + password
+				+ ", confirmarPassword=" + confirmarPassword + ", roles=" + roles + "]";
 	}
 	
 }

@@ -49,195 +49,56 @@
 	<div class="mx-auto col-sm-10 main-section" id="myTab" role="tablist">
 		<ul class="nav nav-tabs justify-content-end">
 			<li class="nav-item">
-			<a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Usuarios</a>
+				<a class="nav-link active" th:classappend=" ${listUsuarioTab}" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Usuarios</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" id="form-tab" data-toggle="tab" href="#form-usuario" role="tab" aria-controls="form" aria-selected="true">Alta usuario</a>				   	
+				<a class="nav-link" th:classappend=" ${formUsuarioTab}" id="form-tab" data-toggle="tab" href="#form-usuario" role="tab" aria-controls="form" aria-selected="true">Alta usuario</a>				   	
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" id="list-tab" data-toggle="tab" href="#list-productos" role="tab" aria-controls="list" aria-selected="false">Productos</a>
+				<a class="nav-link" th:classappend=" ${listProductoTab}" id="list-tab" data-toggle="tab" href="#list-productos" role="tab" aria-controls="list" aria-selected="true">Productos</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" id="form-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="form" aria-selected="true">Alta producto</a>				   	
+				<a class="nav-link" th:classappend=" ${formProductoTab}" id="form-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="form" aria-selected="true">Alta producto</a>				   	
 			</li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+			<div class="tab-pane fade show active" th:classappend=" ${listUsuarioTab}" id="list" role="tabpanel" aria-labelledby="list-tab">
 				<div class="card">
 					<div class="card-header">
 						<h4>Lista de usuarios</h4>
 					</div>
 					<div class="card-body">
-						<div class="table-responsive">
-							<table id="ListaUsuarios" class="table table-bordered table-hover table-striped">
-								<thead class="thead-light">
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Nombre</th>
-									<th scope="col">Apellido</th>
-									<th scope="col">Usuario</th>
-									<th scope="col">E-mail</th>
-									<th></th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Rey</td>
-									<td>Salazar</td>
-									<td>rsalazar</td>
-									<td>reysalazar@blog.com</td>
-									<td>
-										<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-user-times"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>Erika</td>
-									<td>Cisneros</td>
-									<td>ecisneros</td>
-									<td>ericisneros@blog.com</td>
-									<td>
-										<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-user-times"></i></a>
-									</td>
-								</tr>
-								</tbody>
-							</table>
-						</div>
-
+						<div th:include="admin/lista-usuarios.html" th:remove="tag"></div>
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade" id="form-usuario" role="tabpanel" aria-labelledby="form-tab">
+			<div class="tab-pane fade" th:classappend=" ${formUsuarioTab}" id="form-usuario" role="tabpanel" aria-labelledby="form-tab">
 				<div class="card">
 					<div class="card-header">
 						<h4>Alta usuarios</h4>
 					</div>
 					<div class="card-body">
-						<form class="form" role="form" autocomplete="off">
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Nombre</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="text" >
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Apellido</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="text" >
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Email</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="email">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Usuario</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="text">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Password</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="password">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Confirmar password</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="password" >
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-lg-12 text-center">
-									<input type="reset" class="btn btn-secondary" value="Cancelar">
-									<input type="button" class="btn btn-primary"
-										value="Guardar cambios">
-								</div>
-							</div>
-						</form>
+						<div th:include="admin/form-usuario.html" th:remove="tag"></div>
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade" id="list-productos" role="tabpanel" aria-labelledby="list-tab">
+			<div class="tab-pane fade" th:classappend=" ${listProductoTab}" id="list-productos" role="tabpanel" aria-labelledby="list-tab">
 				<div class="card">
 					<div class="card-header">
 						<h4>Lista de productos</h4>
 					</div>
 					<div class="card-body">
-						<div class="table-responsive">
-							<table id="ListaProductos" class="table table-bordered table-hover table-striped">
-								<thead class="thead-light">
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Descripción</th>
-									<th scope="col">Precio</th>
-									<th scope="col">Categoría</th>
-									<th></th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Alimento balanceado</td>
-									<td>890.00</td>
-									<td>regular</td>
-									<td>
-										<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>Antipulgas</td>
-									<td>500.00</td>
-									<td>medicamento</td>
-									<td>
-										<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
-									</td>
-								</tr>
-								</tbody>
-							</table>
-						</div>
-
+						<div th:include="admin/lista-productos.html" th:remove="tag"></div>
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade" id="form-producto" role="tabpanel" aria-labelledby="form-tab">
+			<div class="tab-pane fade" th:classappend=" ${formProductoTab}" id="form-producto" role="tabpanel" aria-labelledby="form-tab">
 				<div class="card">
 					<div class="card-header">
 						<h4>Alta productos</h4>
 					</div>
 					<div class="card-body">
-						<form class="form" role="form" autocomplete="off">
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Descripción</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="text" >
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Precio</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="text" >
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">Categoría</label>
-								<div class="col-lg-9">
-									<input class="form-control" type="email">
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-lg-12 text-center">
-									<input type="reset" class="btn btn-secondary" value="Cancelar">
-									<input type="button" class="btn btn-primary"
-										value="Guardar cambios">
-								</div>
-							</div>
-						</form>
+						<div th:include="admin/form-producto.html" th:remove="tag"></div>
 					</div>
 				</div>
 			</div>

@@ -27,7 +27,7 @@ public class Turno implements Serializable{
 	
 	@Column
 	@NotBlank
-	private String mascotaCliente;
+	private String mascota;
 	
 	@Column
 	@NotBlank
@@ -35,11 +35,11 @@ public class Turno implements Serializable{
 	
 	@Column
 	@NotBlank
-	private String horaInicio;
+	private String inicio;
 	
 	@Column
 	@NotBlank
-	private String horaFinal;
+	private String fin;
 	
 	@Column
 	@NotBlank
@@ -74,20 +74,28 @@ public class Turno implements Serializable{
 		this.id = id;
 	}
 
-	public String getHoraInicio() {
-		return horaInicio;
+	public String getMascota() {
+		return mascota;
 	}
 
-	public void setHoraInicio(String horaInicio) {
-		this.horaInicio = horaInicio;
+	public void setMascota(String mascota) {
+		this.mascota = mascota;
 	}
 
-	public String getHoraFinal() {
-		return horaFinal;
+	public String getInicio() {
+		return inicio;
 	}
 
-	public void setHoraFinal(String horaFinal) {
-		this.horaFinal = horaFinal;
+	public void setInicio(String inicio) {
+		this.inicio = inicio;
+	}
+
+	public String getFin() {
+		return fin;
+	}
+
+	public void setFin(String fin) {
+		this.fin = fin;
 	}
 
 	public String getEspecialidad() {
@@ -108,7 +116,7 @@ public class Turno implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(especialidad, fecha, horaFinal, horaInicio, id, veterinario);
+		return Objects.hash(especialidad, fecha, fin, id, inicio, mascota, veterinario);
 	}
 
 	@Override
@@ -121,13 +129,14 @@ public class Turno implements Serializable{
 			return false;
 		Turno other = (Turno) obj;
 		return Objects.equals(especialidad, other.especialidad) && Objects.equals(fecha, other.fecha)
-				&& Objects.equals(horaFinal, other.horaFinal) && Objects.equals(horaInicio, other.horaInicio)
-				&& Objects.equals(id, other.id) && Objects.equals(veterinario, other.veterinario);
+				&& Objects.equals(fin, other.fin) && Objects.equals(id, other.id)
+				&& Objects.equals(inicio, other.inicio) && Objects.equals(mascota, other.mascota)
+				&& Objects.equals(veterinario, other.veterinario);
 	}
 
 	@Override
 	public String toString() {
-		return "Turno [id=" + id + ", fecha=" + fecha + ", horaInicio=" + horaInicio + ", horaFinal=" + horaFinal
+		return "Turno [id=" + id + ", mascota=" + mascota + ", fecha=" + fecha + ", inicio=" + inicio + ", fin=" + fin
 				+ ", especialidad=" + especialidad + ", veterinario=" + veterinario + "]";
 	}
 

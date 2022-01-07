@@ -1,0 +1,20 @@
+							<div class="table-responsive">
+								<table id="listaVeterinarios" class="table table-bordered table-hover table-striped">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Nombre</th>
+											<th scope="col">Apellido</th>
+											<th scope="col">Especialidad</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="veterinario: ${listaUsuarios}" th:if="${veterinario.especialidad != null}">
+											<td th:text="${veterinario.id}"></td>
+											<td th:text="${veterinario.nombre}"></td>
+											<td th:text="${veterinario.apellido}"></td>
+											<td th:text="${veterinario.especialidad}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>

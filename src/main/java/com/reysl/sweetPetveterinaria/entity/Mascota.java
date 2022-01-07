@@ -32,27 +32,20 @@ public class Mascota implements Serializable{
 	
 	@Column
 	@NotBlank
-	private String nombreMascota;
+	private String nombre;
 	
 	@Column
 	@NotBlank
 	@Size(min=3, message = "Debe ingresar como mínimo 3 caracteres")
-	private String nombreDueño;
+	private String duenio;
 	
 	@Column
 	@NotBlank
 	@Size(min=8, message = "Debe ingresar como mínimo 8 números")
-	private String numeroContacto;
+	private String contacto;
 
 	public Mascota() {
 		super();
-	}
-	
-	
-
-	public Mascota(Long id) {
-		super();
-		this.id = id;
 	}
 
 	public Long getId() {
@@ -71,33 +64,33 @@ public class Mascota implements Serializable{
 		this.tipo = tipo;
 	}
 
-	public String getNombreMascota() {
-		return nombreMascota;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNombreMascota(String nombreMascota) {
-		this.nombreMascota = nombreMascota;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getNombreDueño() {
-		return nombreDueño;
+	public String getDuenio() {
+		return duenio;
 	}
 
-	public void setNombreDueño(String nombreDueño) {
-		this.nombreDueño = nombreDueño;
+	public void setDuenio(String duenio) {
+		this.duenio = duenio;
 	}
 
-	public String getNumeroContacto() {
-		return numeroContacto;
+	public String getContacto() {
+		return contacto;
 	}
 
-	public void setNumeroContacto(String numeroContacto) {
-		this.numeroContacto = numeroContacto;
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombreDueño, nombreMascota, numeroContacto, tipo);
+		return Objects.hash(contacto, duenio, id, nombre, tipo);
 	}
 
 	@Override
@@ -109,15 +102,15 @@ public class Mascota implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Mascota other = (Mascota) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nombreDueño, other.nombreDueño)
-				&& Objects.equals(nombreMascota, other.nombreMascota)
-				&& Objects.equals(numeroContacto, other.numeroContacto) && Objects.equals(tipo, other.tipo);
+		return Objects.equals(contacto, other.contacto) && Objects.equals(duenio, other.duenio)
+				&& Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(tipo, other.tipo);
 	}
 
 	@Override
 	public String toString() {
-		return "Mascota [id=" + id + ", tipo=" + tipo + ", nombreMascota=" + nombreMascota + ", nombreDueño="
-				+ nombreDueño + ", numeroContacto=" + numeroContacto + "]";
+		return "Mascota [id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", dueño=" + duenio + ", contacto="
+				+ contacto + "]";
 	}
 
 }

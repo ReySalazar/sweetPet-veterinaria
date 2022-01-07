@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.reysl.sweetPetveterinaria.entity.Turno;
+import com.reysl.sweetPetveterinaria.entity.Producto;
 
 @Repository
-public interface TurnoRepository extends CrudRepository<Turno, Long>{
+public interface ProductoRepository extends CrudRepository<Producto, Long>{
 	
-	public Optional<Turno> findByMascota(String mascota);
+	public Optional<Producto> findByDescripcion(String descripcion);
 	
 }

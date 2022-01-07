@@ -10,6 +10,8 @@ import com.reysl.sweetPetveterinaria.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
 	
-	//public Optional<Usuario> findByUsername(String usuario);
+	public Optional<Usuario> findByUsuario(String usuario);
+	
+	//public Optional findByPassword(Long id, String password);
 	
 }
