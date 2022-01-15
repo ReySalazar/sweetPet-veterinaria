@@ -46,64 +46,78 @@
 </head>
 <body>
 	<div class="container">
-	<div class="mx-auto col-sm-10 main-section" id="myTab" role="tablist">
-		<ul class="nav nav-tabs justify-content-end">
-			<li class="nav-item">
-				<a class="nav-link active" th:classappend=" ${listUsuarioTab}" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Usuarios</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:classappend=" ${formUsuarioTab}" id="form-tab" data-toggle="tab" href="#form-usuario" role="tab" aria-controls="form" aria-selected="true">Alta usuario</a>				   	
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:classappend=" ${listProductoTab}" id="list-tab" data-toggle="tab" href="#list-productos" role="tab" aria-controls="list" aria-selected="true">Productos</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:classappend=" ${formProductoTab}" id="form-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="form" aria-selected="true">Alta producto</a>				   	
-			</li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" th:classappend=" ${listUsuarioTab}" id="list" role="tabpanel" aria-labelledby="list-tab">
-				<div class="card">
-					<div class="card-header">
-						<h4>Lista de usuarios</h4>
-					</div>
-					<div class="card-body">
-						<div th:include="admin/lista-usuarios.html" th:remove="tag"></div>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" th:classappend=" ${formUsuarioTab}" id="form-usuario" role="tabpanel" aria-labelledby="form-tab">
-				<div class="card">
-					<div class="card-header">
-						<h4>Alta usuarios</h4>
-					</div>
-					<div class="card-body">
-						<div th:include="admin/form-usuario.html" th:remove="tag"></div>
+		<div class="mx-auto col-sm-10 main-section" id="myTab" role="tablist">
+			<ul class="nav nav-tabs justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link active" th:classappend=" ${listUsuarioTab}" id="list-tab" data-toggle="tab" href="#list-usuarios" role="tab" aria-controls="list" aria-selected="false">Usuarios</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:classappend=" ${formUsuarioTab}" id="form-tab" data-toggle="tab" href="#form-usuario" role="tab" aria-controls="form" aria-selected="true">Alta usuario</a>				   	
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:classappend=" ${listProductoTab}" id="list-tab" data-toggle="tab" href="#list-productos" role="tab" aria-controls="list" aria-selected="true">Productos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:classappend=" ${formProductoTab}" id="form-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="form" aria-selected="true">Alta producto</a>				   	
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:classappend=" ${formMascotaTab}" id="form-tab" data-toggle="tab" href="#form-mascota" role="tab" aria-controls="form" aria-selected="true">Alta mascota</a>				   	
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" th:classappend=" ${listUsuarioTab}" id="list-usuarios" role="tabpanel" aria-labelledby="list-tab"> <!-- id enlaza con href	-->
+					<div class="card">
+						<div class="card-header">
+							<h4>Lista de usuarios</h4>
+						</div>
+						<div class="card-body">
+							<div th:include="admin/lista-usuarios.html" th:remove="tag"></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="tab-pane fade" th:classappend=" ${listProductoTab}" id="list-productos" role="tabpanel" aria-labelledby="list-tab">
-				<div class="card">
-					<div class="card-header">
-						<h4>Lista de productos</h4>
-					</div>
-					<div class="card-body">
-						<div th:include="admin/lista-productos.html" th:remove="tag"></div>
+				<div class="tab-pane fade" th:classappend=" ${formUsuarioTab}" id="form-usuario" role="tabpanel" aria-labelledby="form-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Alta usuarios</h4>
+						</div>
+						<div class="card-body">
+							<div th:include="admin/form-usuario.html" th:remove="tag"></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="tab-pane fade" th:classappend=" ${formProductoTab}" id="form-producto" role="tabpanel" aria-labelledby="form-tab">
-				<div class="card">
-					<div class="card-header">
-						<h4>Alta productos</h4>
+				<div class="tab-pane fade" th:classappend=" ${listProductoTab}" id="list-productos" role="tabpanel" aria-labelledby="list-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Lista de productos</h4>
+						</div>
+						<div class="card-body">
+							<div th:include="admin/lista-productos.html" th:remove="tag"></div>
+						</div>
 					</div>
-					<div class="card-body">
-						<div th:include="admin/form-producto.html" th:remove="tag"></div>
+				</div>
+				<div class="tab-pane fade" th:classappend=" ${formProductoTab}" id="form-producto" role="tabpanel" aria-labelledby="form-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Alta productos</h4>
+						</div>
+						<div class="card-body">
+							<div th:include="admin/form-producto.html" th:remove="tag"></div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" th:classappend=" ${formMascotaTab}" id="form-mascota" role="tabpanel" aria-labelledby="form-tab">
+					<div class="card">
+						<div class="card-header">
+							<h4>Alta mascotas</h4>
+						</div>
+						<div class="card-body">
+							<div th:include="admin/form-mascota.html" th:remove="tag"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error Message</div>
 </body>
 </html>

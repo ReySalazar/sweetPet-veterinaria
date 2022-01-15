@@ -17,4 +17,10 @@ public class TurnoServiceImpl implements TurnoService{
 		return turnoRepository.findAll();
 	}
 
+	@Override
+	public Turno crearTurno(Turno turno) {
+		turno = turnoRepository.save(turno);
+		return turno;
+	}
+
 }

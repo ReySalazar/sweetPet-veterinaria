@@ -5,5 +5,7 @@ import com.reysl.sweetPetveterinaria.entity.Mascota;
 public interface MascotaService {
 	
 	public Iterable<Mascota> getAllMascotas();
+
+	public Mascota crearMascota(Mascota mascota) throws Exception;
 	
 }

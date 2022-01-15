@@ -5,5 +5,7 @@ import com.reysl.sweetPetveterinaria.entity.Producto;
 public interface ProductoService {
 	
 	public Iterable<Producto> getAllProductos();
+
+	public Producto crearProducto(Producto producto) throws Exception;
 	
 }

@@ -14,12 +14,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
-
-
 
 @Entity
 public class Usuario implements Serializable {
@@ -49,7 +48,8 @@ public class Usuario implements Serializable {
 	@Size(min=4, message = "Debe ingresar como mínimo 4 caracteres")
 	private String usuario;
 	
-	@Column
+	@Column(unique = true)
+	@Email  // valida que el dato ingresado tenga el formato email
 	@NotBlank
 	private String email;
 	

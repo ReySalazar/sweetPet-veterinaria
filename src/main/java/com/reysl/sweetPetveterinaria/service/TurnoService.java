@@ -5,5 +5,7 @@ import com.reysl.sweetPetveterinaria.entity.Turno;
 public interface TurnoService {
 	
 	public Iterable<Turno> getAllTurnos();
+
+	public Turno crearTurno(Turno turno);
 	
 }

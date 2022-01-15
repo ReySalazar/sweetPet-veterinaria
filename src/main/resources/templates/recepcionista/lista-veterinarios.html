@@ -9,7 +9,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="veterinario: ${listaUsuarios}" th:if="${veterinario.especialidad != null}">
+										<tr th:each="veterinario: ${listaUsuarios}" th:if="${veterinario.especialidad != null and veterinario.especialidad != ''}">
 											<td th:text="${veterinario.id}"></td>
 											<td th:text="${veterinario.nombre}"></td>
 											<td th:text="${veterinario.apellido}"></td>

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.reysl.sweetPetveterinaria.entity.Mascota;
 
-
 @Repository
 public interface MascotaRepository extends CrudRepository<Mascota, Long>{
 	
