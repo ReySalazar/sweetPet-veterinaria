@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.reysl.sweetPetveterinaria.entity.Mascota;
 import com.reysl.sweetPetveterinaria.entity.Producto;
 import com.reysl.sweetPetveterinaria.entity.Usuario;
 import com.reysl.sweetPetveterinaria.repository.RolRepository;
@@ -99,30 +98,6 @@ public class AdminController {
 		
 		return "redirect:/admin";
 		//return "admin/vista-admin";
-		
-	}
-	
-	@PostMapping("/admin/mascotaForm")
-	public String crearMascota(@Validated @ModelAttribute("mascotaForm") Mascota mascota, BindingResult result, ModelMap model) {
-		if(result.hasErrors()) {
-			model.addAttribute("mascotaForm", mascota);
-			model.addAttribute("mascotaFormTab", "active");
-		}else {
-			try {
-				mascotaService.crearMascota(mascota);
-				model.addAttribute("mascotaForm", new Mascota());
-				model.addAttribute("mascotaListTab", "active");
-			} catch (Exception e) {
-				model.addAttribute("formErrorMessage", e.getMessage());
-				model.addAttribute("mascotaForm", mascota);
-				model.addAttribute("mascotaFormTab", "active");
-				model.addAttribute("listaMascotas", mascotaService.getAllMascotas());
-			}
-		}
-		
-		model.addAttribute("listaMascotas", mascotaService.getAllMascotas());
-		
-		return "redirect:/admin";
 		
 	}
 	

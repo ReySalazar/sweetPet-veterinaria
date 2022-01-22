@@ -60,9 +60,6 @@
 				<li class="nav-item">
 					<a class="nav-link" th:classappend=" ${formProductoTab}" id="form-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="form" aria-selected="true">Alta producto</a>				   	
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:classappend=" ${formMascotaTab}" id="form-tab" data-toggle="tab" href="#form-mascota" role="tab" aria-controls="form" aria-selected="true">Alta mascota</a>				   	
-				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" th:classappend=" ${listUsuarioTab}" id="list-usuarios" role="tabpanel" aria-labelledby="list-tab"> <!-- id enlaza con href	-->
@@ -102,16 +99,6 @@
 						</div>
 						<div class="card-body">
 							<div th:include="admin/form-producto.html" th:remove="tag"></div>
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane fade" th:classappend=" ${formMascotaTab}" id="form-mascota" role="tabpanel" aria-labelledby="form-tab">
-					<div class="card">
-						<div class="card-header">
-							<h4>Alta mascotas</h4>
-						</div>
-						<div class="card-body">
-							<div th:include="admin/form-mascota.html" th:remove="tag"></div>
 						</div>
 					</div>
 				</div>

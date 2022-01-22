@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +35,8 @@ public class RecepcionistaController {
 	
 	@GetMapping("/recepcionista")
 	public String getRecepcionistaActions(Model model) {
+		model.addAttribute("mascotaForm", new Mascota());
+		model.addAttribute("turnoForm", new Turno());
 		model.addAttribute("listaProductos", productoService.getAllProductos());
 		model.addAttribute("listaUsuarios", usuarioService.getAllUsuarios());
 		model.addAttribute("listaMascotas", mascotaService.getAllMascotas());
@@ -70,7 +71,7 @@ public class RecepcionistaController {
 	}
 	
 	@PostMapping("/recepcionista/turnoForm")
-	public String crearTurno(@Validated @ModelAttribute("turnoForm") Turno turno, BindingResult result, ModelMap model) {
+	public String crearTurno(@Valid @ModelAttribute("turnoForm") Turno turno, BindingResult result, ModelMap model) {
 		if(result.hasErrors()) {
 			model.addAttribute("turnoForm", turno);
 			model.addAttribute("turnoFormTab", "active");
