@@ -35,11 +35,7 @@ public class Turno implements Serializable{
 	
 	@Column
 	@NotBlank
-	private String inicio;
-	
-	@Column
-	@NotBlank
-	private String fin;
+	private String horario;
 	
 	@Column
 	@NotBlank
@@ -82,20 +78,12 @@ public class Turno implements Serializable{
 		this.mascota = mascota;
 	}
 
-	public String getInicio() {
-		return inicio;
+	public String getHorario() {
+		return horario;
 	}
 
-	public void setInicio(String inicio) {
-		this.inicio = inicio;
-	}
-
-	public String getFin() {
-		return fin;
-	}
-
-	public void setFin(String fin) {
-		this.fin = fin;
+	public void setHorario(String horario) {
+		this.horario = horario;
 	}
 
 	public String getEspecialidad() {
@@ -116,7 +104,7 @@ public class Turno implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(especialidad, fecha, fin, id, inicio, mascota, veterinario);
+		return Objects.hash(especialidad, fecha, horario, id, mascota, veterinario);
 	}
 
 	@Override
@@ -129,14 +117,13 @@ public class Turno implements Serializable{
 			return false;
 		Turno other = (Turno) obj;
 		return Objects.equals(especialidad, other.especialidad) && Objects.equals(fecha, other.fecha)
-				&& Objects.equals(fin, other.fin) && Objects.equals(id, other.id)
-				&& Objects.equals(inicio, other.inicio) && Objects.equals(mascota, other.mascota)
-				&& Objects.equals(veterinario, other.veterinario);
+				&& Objects.equals(horario, other.horario) && Objects.equals(id, other.id)
+				&& Objects.equals(mascota, other.mascota) && Objects.equals(veterinario, other.veterinario);
 	}
 
 	@Override
 	public String toString() {
-		return "Turno [id=" + id + ", mascota=" + mascota + ", fecha=" + fecha + ", inicio=" + inicio + ", fin=" + fin
+		return "Turno [id=" + id + ", mascota=" + mascota + ", fecha=" + fecha + ", horario=" + horario
 				+ ", especialidad=" + especialidad + ", veterinario=" + veterinario + "]";
 	}
 

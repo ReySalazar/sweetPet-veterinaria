@@ -18,9 +18,22 @@
 											<td th:text="${mascota.duenio}"></td>
 											<td th:text="${mascota.contacto}"></td>
 											<td>
-												<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+												<a href="#" th:href="@{'/recepcionista/editMascota/'+ ${mascota.id}}"><i class="fas fa-edit"></i></a> 
+												| <a href="#" th:onclick="'javascript:confirmDeleteMascota(\''+ ${mascota.id} +'\');'"><i class="fas fa-trash-alt"></i></a>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
+							
+							<script type="text/javascript">
+								function confirmDeleteMascota(id){
+									$('#deleteMascotaModal').modal("show");
+									$("#mascotaIdHiddenInput").val(id);
+								}
+								
+								function deleteMascota(){
+									var id = $("#mascotaIdHiddenInput").val();
+								    window.location = "recepcionista/deleteMascota/"+id;
+								}
+							</script>

@@ -15,10 +15,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 	UsuarioRepository usuarioRepository;
 
 	@Override
-	public Iterable<Usuario> getAllUsuarios() {
-		
-		return usuarioRepository.findAll();
-		
+	public Iterable<Usuario> getAllUsuarios() {		
+		return usuarioRepository.findAll();		
 	}
 	
 	private boolean checkUsernameAvailable(Usuario usuario) throws Exception {
@@ -36,6 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		if (!usuario.getPassword().equals(usuario.getConfirmarPassword())) {
 			throw new Exception("La confirmacion de password no coincide");
 		}
+		
 		return true;
 	}
 
@@ -46,6 +45,33 @@ public class UsuarioServiceImpl implements UsuarioService{
 		}
 		
 		return usuario;
+	}
+
+	@Override
+	public Usuario getUsuarioById(Long id) throws Exception {
+		return usuarioRepository.findById(id).orElseThrow(() -> new Exception("El usuario a editar no existe"));
+	}
+
+	@Override
+	public Usuario updateUsuario(Usuario fromUsuario) throws Exception {
+		Usuario toUsuario = getUsuarioById(fromUsuario.getId());
+		mapUsuario(fromUsuario, toUsuario);
+		return usuarioRepository.save(toUsuario);
+	}
+	
+	protected void mapUsuario(Usuario from, Usuario to) {
+		to.setUsuario(from.getUsuario());
+		to.setNombre(from.getNombre());
+		to.setApellido(from.getApellido());
+		to.setEmail(from.getEmail());
+		to.setRoles(from.getRoles());
+		to.setEspecialidad(from.getEspecialidad());
+	}
+	
+	public void deleteUsuario(Long id) throws Exception {
+		//Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new Exception("El usuario no existe!!"));
+		Usuario usuario = getUsuarioById(id);
+		usuarioRepository.delete(usuario);
 	}
 
 }

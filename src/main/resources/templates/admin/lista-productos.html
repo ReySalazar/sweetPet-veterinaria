@@ -18,9 +18,22 @@
 										<td th:text="${producto.precio}"></td>
 										<td th:text="${producto.unidades}"></td>
 										<td>
-											<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+											<a href="#" th:href="@{'/admin/editProducto/'+ ${producto.id}}"><i class="fas fa-edit"></i></a> 
+											| <a href="#" th:onclick="'javascript:confirmDeleteProducto(\''+ ${producto.id} +'\');'"><i class="fas fa-trash-alt"></i></a>
 										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
+						
+						<script type="text/javascript">
+							function confirmDeleteProducto(id){
+								$('#deleteProductoModal').modal("show");
+								$("#productoIdHiddenInput").val(id);
+							}
+							
+							function deleteUser(){
+								var id = $("#productoIdHiddenInput").val();
+							    window.location = "admin/deleteProducto/"+id;
+							}
+						</script>

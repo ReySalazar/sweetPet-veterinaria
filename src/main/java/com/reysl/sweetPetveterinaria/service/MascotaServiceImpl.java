@@ -26,8 +26,8 @@ public class MascotaServiceImpl implements MascotaService{
 		if (mascotaEncontrada.isPresent()) {
 			throw new Exception("El nombre ingresado ya existe");
 		}
-		return true;
 		
+		return true;
 	}
 
 	@Override
@@ -36,8 +36,32 @@ public class MascotaServiceImpl implements MascotaService{
 			mascota = mascotaRepository.save(mascota);
 		}
 		
-		return mascota;
-		
+		return mascota;		
+	}
+
+	@Override
+	public Mascota getMascotaById(Long id) throws Exception {
+		return mascotaRepository.findById(id).orElseThrow(() -> new Exception("La mascota a editar no existe"));
+	}
+
+	@Override
+	public Mascota updateMascota(Mascota fromMascota) throws Exception{
+		Mascota toMascota = getMascotaById(fromMascota.getId());
+		mapMascota(fromMascota, toMascota);
+		return mascotaRepository.save(toMascota);
+	}
+	
+	protected void mapMascota(Mascota from, Mascota to) {
+		to.setNombre(from.getNombre());
+		to.setTipo(from.getTipo());
+		to.setDuenio(from.getDuenio());
+		to.setContacto(from.getContacto());
+	}
+	
+	@Override
+	public void deleteMascota(Long id) throws Exception {
+		Mascota mascota = getMascotaById(id);
+		mascotaRepository.delete(mascota);		
 	}
 	
 }

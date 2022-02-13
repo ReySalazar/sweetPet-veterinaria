@@ -18,9 +18,21 @@
 											<td th:text="${producto.precio}"></td>
 											<td th:text="${producto.unidades}"></td>
 											<td>
-												<a href="#"><i class="fas fa-edit"></i></a>
+												<a href="#" th:onclick="${producto.unidades > 0} ? 'javascript:confirmVenta(\''+ ${producto.id} +'\');'"><i class="fas fa-clipboard-check"></i></a>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
+							
+							<script type="text/javascript">
+								function confirmVenta(id){
+									$('#ventaProductoModal').modal("show");
+									$("#productoIdHiddenInput").val(id);
+								}
+								
+								function ventaProducto(){
+									var id = $("#productoIdHiddenInput").val();
+								    window.location = "veterinario/ventaProducto/"+id;
+								}
+							</script>

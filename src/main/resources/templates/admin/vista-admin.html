@@ -5,15 +5,16 @@
 	
 	<!--JQUERY-->
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+ 			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+ 			crossorigin="anonymous"></script>
 	
 	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script 
-		src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script 
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	
@@ -25,6 +26,7 @@
 	<!-- Nuestro css-->
 	<link rel="stylesheet" type="text/css" href="static/css/vista-usuarios.css"
 		th:href="@{/css/vista-usuarios.css}">
+		
 	<!-- DATA TABLE -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -46,23 +48,23 @@
 </head>
 <body>
 	<div class="container">
-		<div class="mx-auto col-sm-10 main-section" id="myTab" role="tablist">
+		<div class="mx-auto col-sm-12 main-section" id="myTab" role="tablist">
 			<ul class="nav nav-tabs justify-content-end">
 				<li class="nav-item">
-					<a class="nav-link active" th:classappend=" ${listUsuarioTab}" id="list-tab" data-toggle="tab" href="#list-usuarios" role="tab" aria-controls="list" aria-selected="false">Usuarios</a>
+					<a class="nav-link" th:classappend=" ${listUsuarioTab}" id="listUsuario-tab" data-toggle="tab" href="#list-usuarios" role="tab" aria-controls="listUsuarios" aria-selected="false">Usuarios</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" th:classappend=" ${formUsuarioTab}" id="form-tab" data-toggle="tab" href="#form-usuario" role="tab" aria-controls="form" aria-selected="true">Alta usuario</a>				   	
+					<a class="nav-link" th:classappend=" ${formUsuarioTab}" id="formUsuario-tab" data-toggle="tab" href="#form-usuario" role="tab" aria-controls="formUsuarios" aria-selected="true">Alta usuario</a>				   	
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" th:classappend=" ${listProductoTab}" id="list-tab" data-toggle="tab" href="#list-productos" role="tab" aria-controls="list" aria-selected="true">Productos</a>
+					<a class="nav-link" th:classappend=" ${listProductoTab}" id="listProducto-tab" data-toggle="tab" href="#list-productos" role="tab" aria-controls="listProductos" aria-selected="true">Productos</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" th:classappend=" ${formProductoTab}" id="form-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="form" aria-selected="true">Alta producto</a>				   	
+					<a class="nav-link" th:classappend=" ${formProductoTab}" id="formProducto-tab" data-toggle="tab" href="#form-producto" role="tab" aria-controls="formProductos" aria-selected="true">Alta producto</a>				   	
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" th:classappend=" ${listUsuarioTab}" id="list-usuarios" role="tabpanel" aria-labelledby="list-tab"> <!-- id enlaza con href	-->
+				<div class="tab-pane fade show" th:classappend=" ${listUsuarioTab}" id="list-usuarios" role="tabpanel" aria-labelledby="listUsuario-tab"> <!-- id enlaza con href	-->
 					<div class="card">
 						<div class="card-header">
 							<h4>Lista de usuarios</h4>
@@ -72,17 +74,17 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" th:classappend=" ${formUsuarioTab}" id="form-usuario" role="tabpanel" aria-labelledby="form-tab">
+				<div class="tab-pane fade show" th:classappend=" ${formUsuarioTab}" id="form-usuario" role="tabpanel" aria-labelledby="formUsuario-tab">
 					<div class="card">
 						<div class="card-header">
-							<h4>Alta usuarios</h4>
+							<h4>Usuario</h4>
 						</div>
 						<div class="card-body">
 							<div th:include="admin/form-usuario.html" th:remove="tag"></div>
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" th:classappend=" ${listProductoTab}" id="list-productos" role="tabpanel" aria-labelledby="list-tab">
+				<div class="tab-pane fade show" th:classappend=" ${listProductoTab}" id="list-productos" role="tabpanel" aria-labelledby="listProducto-tab">
 					<div class="card">
 						<div class="card-header">
 							<h4>Lista de productos</h4>
@@ -92,7 +94,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" th:classappend=" ${formProductoTab}" id="form-producto" role="tabpanel" aria-labelledby="form-tab">
+				<div class="tab-pane fade show" th:classappend=" ${formProductoTab}" id="form-producto" role="tabpanel" aria-labelledby="formProducto-tab">
 					<div class="card">
 						<div class="card-header">
 							<h4>Alta productos</h4>
@@ -105,6 +107,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error Message</div>
+	<div th:include="admin/confirm-usuario-delete-dialog.html" th:remove="tag"></div>
+	<div th:include="admin/confirm-producto-delete-dialog.html" th:remove="tag"></div>
 </body>
 </html>

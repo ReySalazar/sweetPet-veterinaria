@@ -8,4 +8,10 @@ public interface MascotaService {
 
 	public Mascota crearMascota(Mascota mascota) throws Exception;
 	
+	public Mascota getMascotaById(Long id) throws Exception;
+
+	public Mascota updateMascota(Mascota mascota) throws Exception;
+
+	public void deleteMascota(Long id) throws Exception;
+	
 }

@@ -1,52 +1,70 @@
-							<form id="turnoForm" th:object="${turnoForm}" method="post" class="form" role="form" th:action="@{/recepcionista/turnoForm}">
+							<form id="turnoForm" th:object="${turnoForm}" method="post" class="form" role="form" th:action="${editTurnoMode} ? @{/recepcionista/editTurno} : @{/recepcionista/turnoForm}">
 								<!--Es necesario para poder pasar la validacion del Model-->
-								<input class="form-control" type="hidden" th:field="${turnoForm.id}" th:if="${editMode}">
+								<input class="form-control" type="hidden" th:field="${turnoForm.id}" th:if="${editTurnoMode}">
 								
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">Mascota</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.mascota}">
+										<!--<input class="form-control" type="text" th:field="${turnoForm.mascota}">-->
+										<select th:field="${turnoForm.mascota}" class="form-control" size="3">
+											<option th:each="mascota :${listaMascotas}" 
+												th:value="${mascota.nombre}" th:text="${mascota.nombre + ' ' + '[' + mascota.tipo + ']'}">
+											</option>
+										</select>
 										<div class="alert-danger" th:if="${#fields.hasErrors('mascota')}" th:errors="*{mascota}">Name Error</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Veterinario</label>
-									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.veterinario}">
-										<div class="alert-danger" th:if="${#fields.hasErrors('veterinario')}" th:errors="*{veterinario}">Name Error</div>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">Especialidad</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.especialidad}">
+										<!--<input class="form-control" type="text" th:field="${turnoForm.especialidad}">-->
+										<select th:field="${turnoForm.especialidad}" class="form-control" size="3">
+										  <option value="canino">CANINO</option>
+										  <option value="felino">FELINO</option>
+										  <option value="exotico">EXÓTICO</option>
+										</select>
 										<div class="alert-danger" th:if="${#fields.hasErrors('especialidad')}" th:errors="*{especialidad}">Name Error</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">Veterinario</label>
+									<div class="col-lg-9">
+										<select th:field="${turnoForm.veterinario}" class="form-control" size="3">
+											<option th:each="vet :${listaUsuarios}" th:if="${vet.especialidad != null and vet.especialidad != ''}" 
+												th:value="${vet.nombre + ' ' + vet.apellido}" th:text="${vet.nombre + ' ' + vet.apellido + ' ' + '[' + vet.especialidad + ']'}">
+											</option>
+										</select>
+										<div class="alert-danger" th:if="${#fields.hasErrors('veterinario')}" th:errors="*{veterinario}">Name Error</div>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">Fecha</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.fecha}">
+										<input class="form-control" type="text" th:field="${turnoForm.fecha}" placeholder="dd/mm/aaaa">
 										<div class="alert-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Name Error</div>
-									</div>
+									</div>					
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Hora inicial</label>
+									<label class="col-lg-3 col-form-label form-control-label">Horario</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.inicio}">
-										<div class="alert-danger" th:if="${#fields.hasErrors('inicio')}" th:errors="*{inicio}">Name Error</div>
+										<!--<input class="form-control" type="text" th:field="${turnoForm.horario}">-->
+									
+									<select th:field="${turnoForm.horario}" class="form-control" size="6">
+										  <option value="10:00 - 10:30">10:00 - 10:30</option>
+										  <option value="10:30 - 11:00">10:30 - 11:00</option>
+										  <option value="11:00 - 11:30">11:00 - 11:30</option>
+										  <option value="11:30 - 12:00">11:30 - 12:00</option>
+										  <option value="16:00 - 16:30">16:00 - 16:30</option>
+										  <option value="16:30 - 17:00">16:30 - 17:00</option>
+									</select>
 									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Hora final</label>
-									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.fin}">
-										<div class="alert-danger" th:if="${#fields.hasErrors('fin')}" th:errors="*{fin}">Name Error</div>
-									</div>
+									<div class="alert-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}">Name Error</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-lg-12 text-center">
-										<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editMode} ? 'Guardar cambios' : 'Crear turno'">
+										<a class="btn btn-secondary" th:href="@{'/recepcionista/turnoForm/cancel'}">Cancelar</a>
+										<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editTurnoMode} ? 'Guardar cambios' : 'Crear turno'">
 									</div>
 								</div>
+								<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error Message</div>
 							</form>

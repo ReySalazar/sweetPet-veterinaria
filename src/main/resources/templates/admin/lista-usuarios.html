@@ -7,6 +7,7 @@
 									<th scope="col">Apellido</th>
 									<th scope="col">Usuario</th>
 									<th scope="col">E-mail</th>
+									<!--<th scope="col">Rol</th>-->
 									<th>Acción</th>
 								</tr>
 								</thead>
@@ -17,11 +18,27 @@
 									<td th:text="${usuario.apellido}"></td>
 									<td th:text="${usuario.usuario}"></td>
 									<td th:text="${usuario.email}"></td>
+									<!--<td th:text="${usuario.roles}"></td>-->
+									<!--<td th:each="rol :${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></td>-->
 									<td>
-										<a href="#" th:href="@{'/editUser/'+ ${usuario.id}}"><i class="fas fa-edit"></i></a> 
-										| <a href="#" th:onclick="'javascript:confirmDelete(\''+ ${usuario.id} +'\');'"><i class="fas fa-user-times"></i></a>
+										<a href="#" th:href="@{'/admin/editUsuario/'+ ${usuario.id}}"><i class="fas fa-edit"></i></a> 
+										| <a href="#" th:onclick="'javascript:confirmDeleteUsuario(\''+ ${usuario.id} +'\');'"><i class="fas fa-user-times"></i></a>
+											<!--<a href="#" th:href="@{'/admin/deleteUsuario/'+ ${usuario.id}}"><i class="fas fa-user-times"></i></a>-->
 									</td>
 								</tr>
 								</tbody>
 							</table>
+							<div class="alert alert-danger text-center" th:if="${listErrorMessage}" th:text="${listErrorMessage}">Error Message</div>
 						</div>
+						
+						<script type="text/javascript">
+							function confirmDeleteUsuario(id){
+								$('#deleteModal').modal("show");
+								$("#userIdHiddenInput").val(id);
+							}
+							
+							function deleteUser(){
+								var id = $("#userIdHiddenInput").val();
+							    window.location = "admin/deleteUsuario/"+id;
+							}
+						</script>
