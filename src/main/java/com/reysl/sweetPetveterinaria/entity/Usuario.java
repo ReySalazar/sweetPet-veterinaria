@@ -2,17 +2,17 @@ package com.reysl.sweetPetveterinaria.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
+//import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+//import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinTable;
+//import javax.persistence.ManyToMany;
+//import javax.persistence.JoinColumn;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -60,14 +60,18 @@ public class Usuario implements Serializable {
 	@NotBlank
 	private String password;
 	
+	@Column
+	@NotBlank
+	private String rol;
+	
 	@Transient
 	private String confirmarPassword;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	/*@ManyToMany(fetch = FetchType.LAZY)  //Lazy : obtengo los roles sólo cuando los necesito usar (getRoles())
 	@JoinTable(name = "usuario_roles",
 			joinColumns = @JoinColumn(name = "usuario_id"),
 			inverseJoinColumns = @JoinColumn(name = "rol_id")) //busca cual es el Id del objeto rol y lo asigna como clave foranea
-	private Set<Rol> roles;  // Crea, una colección de roles(sin valores repetidos)
+	private Set<Rol> roles;  // Crea, una colección de roles(sin valores repetidos)*/
 	
 	public Usuario() {
 		super();
@@ -76,6 +80,12 @@ public class Usuario implements Serializable {
 	public Usuario(Long id) {
 		super();
 		this.id = id;
+	}
+	
+	public Usuario(String usuario, String password) {
+		super();
+		this.usuario = usuario;
+		this.password = password;
 	}
 
 	public Long getId() {
@@ -142,17 +152,25 @@ public class Usuario implements Serializable {
 		this.especialidad = especialidad;
 	}
 
-	public Set<Rol> getRoles() {
+	/*public Set<Rol> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
+	}*/
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellido, confirmarPassword, email, especialidad, id, nombre, password, roles, usuario);
+		return Objects.hash(apellido, confirmarPassword, email, especialidad, id, nombre, password, rol, usuario);
 	}
 
 	@Override
@@ -167,7 +185,7 @@ public class Usuario implements Serializable {
 		return Objects.equals(apellido, other.apellido) && Objects.equals(confirmarPassword, other.confirmarPassword)
 				&& Objects.equals(email, other.email) && Objects.equals(especialidad, other.especialidad)
 				&& Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(password, other.password) && Objects.equals(roles, other.roles)
+				&& Objects.equals(password, other.password) && Objects.equals(rol, other.rol)
 				&& Objects.equals(usuario, other.usuario);
 	}
 
@@ -175,7 +193,7 @@ public class Usuario implements Serializable {
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario
 				+ ", email=" + email + ", especialidad=" + especialidad + ", password=" + password
-				+ ", confirmarPassword=" + confirmarPassword + ", roles=" + roles + "]";
+				+ ", confirmarPassword=" + confirmarPassword + ", roles=" + rol + "]";
 	}
 	
 }

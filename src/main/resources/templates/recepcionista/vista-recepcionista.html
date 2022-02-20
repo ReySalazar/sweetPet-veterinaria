@@ -39,14 +39,12 @@
 	</script>
 		<script type="text/javascript">
 	    $(document).ready(function() {
-	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
 	        $('#listaVeterinarios').DataTable();
 	    } );
 	</script>
 		</script>
 		<script type="text/javascript">
 	    $(document).ready(function() {
-	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
 	        $('#listaProductos').DataTable();
 	    } );
 	</script>
@@ -54,10 +52,26 @@
 		</script>
 		<script type="text/javascript">
 	    $(document).ready(function() {
-	        //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
 	        $('#listaMascotas').DataTable();
 	    } );
 	</script>
+	
+	<!-- Bootstrap Date-picker -->
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+	 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script>
+	  $( function() {
+	    $( "#campofecha" ).datepicker({
+		  format: 'dd/mm/yyyy',
+	      numberOfMonths: 2,
+	      showButtonPanel: true,
+	      language: 'sp'
+	    });
+	  } );
+	  </script>
+	
 </head>
 <body>
 	<div class="container">
@@ -144,6 +158,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div>
+			<a class="btn btn-danger" id="logout" href="index" role="button">Salir</a>
 		</div>
 	</div>
 	<div th:include="recepcionista/confirm-turno-delete-dialog.html" th:remove="tag"></div>

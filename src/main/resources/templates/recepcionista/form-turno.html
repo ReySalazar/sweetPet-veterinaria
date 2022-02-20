@@ -37,10 +37,11 @@
 										<div class="alert-danger" th:if="${#fields.hasErrors('veterinario')}" th:errors="*{veterinario}">Name Error</div>
 									</div>
 								</div>
-								<div class="form-group row">
+								<div class="form-group row date x3-date">
 									<label class="col-lg-3 col-form-label form-control-label">Fecha</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" th:field="${turnoForm.fecha}" placeholder="dd/mm/aaaa">
+										<input class="form-control" type="text" id="campofecha" th:field="${turnoForm.fecha}" placeholder="dd/mm/aaaa">
+										<!--<input class="form-control" type="text" th:field="${turnoForm.fecha}" placeholder="dd/mm/aaaa">-->
 										<div class="alert-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Name Error</div>
 									</div>					
 								</div>
@@ -68,3 +69,10 @@
 								</div>
 								<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error Message</div>
 							</form>
+							
+							<!--<script type="text/javascript">
+								$('#sandbox-container .input-group.date').datepicker({
+									format: "dd/mm/yyyy"
+								});
+							</script>-->
+							

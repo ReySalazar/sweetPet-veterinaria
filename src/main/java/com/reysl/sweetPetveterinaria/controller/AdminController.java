@@ -30,13 +30,14 @@ public class AdminController {
 	@Autowired
 	ProductoService productoService;
 	
-	@GetMapping("/")
+	/*@GetMapping({"/", "/index"})
 	public String index() {
 		return "index";
-	}
+	}*/
 	
 	@GetMapping("/admin")
 	public String getAdminAction(Model model) {
+		model.addAttribute("loginForm", new Usuario());
 		model.addAttribute("usuarioForm", new Usuario());
 		model.addAttribute("productoForm", new Producto());
 		model.addAttribute("roles", rolRepository.findAll());

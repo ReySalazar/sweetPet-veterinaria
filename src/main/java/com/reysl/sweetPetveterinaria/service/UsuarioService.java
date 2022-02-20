@@ -13,5 +13,7 @@ public interface UsuarioService {
 	public Usuario updateUsuario(Usuario usuario) throws Exception;
 	
 	public void deleteUsuario(Long id) throws Exception;
+
+	public String encontrarUsuario(Usuario usuario) throws Exception;
 	
 }

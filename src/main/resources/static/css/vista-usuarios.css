@@ -28,3 +28,8 @@ label{
 .nav-tabs{
     border-bottom: 0px;
 }
+
+#logout{
+	padding: 15px;
+	margin-left: 15px;
+}

@@ -12,4 +12,6 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
 	
 	public Optional<Usuario> findByUsuario(String usuario);
 	
+	public Optional<Usuario> findByPassword(String password);
+	
 }

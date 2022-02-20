@@ -29,7 +29,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		
 	}
 
-	private boolean chekPasswordValid(Usuario usuario) throws Exception {
+	private boolean checkPasswordValid(Usuario usuario) throws Exception {
 		
 		if (!usuario.getPassword().equals(usuario.getConfirmarPassword())) {
 			throw new Exception("La confirmacion de password no coincide");
@@ -40,7 +40,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Usuario crearUsuario(Usuario usuario) throws Exception {
-		if (checkUsernameAvailable(usuario) && chekPasswordValid(usuario)) {
+		if (checkUsernameAvailable(usuario) && checkPasswordValid(usuario)) {
 			usuario = usuarioRepository.save(usuario);
 		}
 		
@@ -64,14 +64,29 @@ public class UsuarioServiceImpl implements UsuarioService{
 		to.setNombre(from.getNombre());
 		to.setApellido(from.getApellido());
 		to.setEmail(from.getEmail());
-		to.setRoles(from.getRoles());
+		//to.setRoles(from.getRoles());
+		to.setRol(from.getRol());
 		to.setEspecialidad(from.getEspecialidad());
 	}
 	
 	public void deleteUsuario(Long id) throws Exception {
-		//Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new Exception("El usuario no existe!!"));
-		Usuario usuario = getUsuarioById(id);
+		Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new Exception("El usuario no existe!!"));
+		//Usuario usuario = getUsuarioById(id);
 		usuarioRepository.delete(usuario);
+	}
+
+	@Override
+	public String encontrarUsuario(Usuario usuario) throws Exception{
+		String rol = null;
+		
+		Optional<Usuario> usuarioEncontrado = usuarioRepository.findByUsuario(usuario.getUsuario());
+		
+		if (usuarioEncontrado.isPresent() && usuario.getPassword().equals(usuarioEncontrado.get().getPassword())) {
+			rol  = usuarioEncontrado.get().getRol();
+		}else {
+			rol = "index";
+		}
+		return "redirect:/" + rol;
 	}
 
 }
