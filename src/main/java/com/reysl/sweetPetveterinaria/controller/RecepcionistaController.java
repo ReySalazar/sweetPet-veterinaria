@@ -86,8 +86,8 @@ public class RecepcionistaController {
 				model.addAttribute("turnoForm", turno);
 				model.addAttribute("turnoFormTab", "active");
 				model.addAttribute("listaTurnos", turnoService.getAllTurnos());
-				model.addAttribute("listUsuarios", usuarioService.getAllUsuarios());
-				model.addAttribute("listaUsuarios", mascotaService.getAllMascotas());
+				//model.addAttribute("listUsuarios", usuarioService.getAllUsuarios());
+				//model.addAttribute("listaUsuarios", mascotaService.getAllMascotas());
 			}
 		}
 		
@@ -144,7 +144,8 @@ public class RecepcionistaController {
 		} catch (Exception e) {
 			model.addAttribute("listErrorMessage","El turno no existe!!");
 		}
-		return getRecepcionistaActions(model);
+		//return getRecepcionistaActions(model);
+		return "redirect:/recepcionista";
 	}
 	
 	@GetMapping("/recepcionista/deleteAllTurno/{veterinario}")

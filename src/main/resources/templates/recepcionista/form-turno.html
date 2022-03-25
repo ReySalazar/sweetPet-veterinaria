@@ -40,24 +40,23 @@
 								<div class="form-group row date x3-date">
 									<label class="col-lg-3 col-form-label form-control-label">Fecha</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" id="campofecha" th:field="${turnoForm.fecha}" placeholder="dd/mm/aaaa">
-										<!--<input class="form-control" type="text" th:field="${turnoForm.fecha}" placeholder="dd/mm/aaaa">-->
+										<input class="form-control" type="text" id="campofecha" th:field="${turnoForm.fecha}" placeholder="mm/dd/aaaa">
+										<!--<input class="form-control" type="text" th:field="${turnoForm.fecha}" placeholder="mm/dd/aaaa">-->
 										<div class="alert-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Name Error</div>
 									</div>					
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">Horario</label>
 									<div class="col-lg-9">
-										<!--<input class="form-control" type="text" th:field="${turnoForm.horario}">-->
-									
-									<select th:field="${turnoForm.horario}" class="form-control" size="6">
-										  <option value="10:00 - 10:30">10:00 - 10:30</option>
-										  <option value="10:30 - 11:00">10:30 - 11:00</option>
-										  <option value="11:00 - 11:30">11:00 - 11:30</option>
-										  <option value="11:30 - 12:00">11:30 - 12:00</option>
-										  <option value="16:00 - 16:30">16:00 - 16:30</option>
-										  <option value="16:30 - 17:00">16:30 - 17:00</option>
-									</select>
+										<!--<input class="form-control" type="text" th:field="${turnoForm.horario}">-->									
+										<select th:field="${turnoForm.horario}" class="form-control" size="6">
+											  <option value="10:00 - 10:30">10:00 - 10:30</option>
+											  <option value="10:30 - 11:00">10:30 - 11:00</option>
+											  <option value="11:00 - 11:30">11:00 - 11:30</option>
+											  <option value="11:30 - 12:00">11:30 - 12:00</option>
+											  <option value="16:00 - 16:30">16:00 - 16:30</option>
+											  <option value="16:30 - 17:00">16:30 - 17:00</option>
+										</select>
 									</div>
 									<div class="alert-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}">Name Error</div>
 								</div>

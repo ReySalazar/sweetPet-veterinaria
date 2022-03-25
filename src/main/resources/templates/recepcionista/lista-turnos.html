@@ -20,8 +20,8 @@
 											<td th:text="${turno.fecha}"></td>
 											<td th:text="${turno.horario}"></td>
 											<td>
-												<a href="#" th:href="@{'/recepcionista/editTurno/'+ ${turno.id}}"><i class="fas fa-edit"></i></a> 
-												| <a href="#" th:onclick="'javascript:confirmDeleteTurno(\''+ ${turno.id} +'\');'"><i class="fas fa-trash-alt"></i></a>
+												<!--<a href="#" th:href="@{'/recepcionista/editTurno/'+ ${turno.id}}"><i class="fas fa-edit"></i></a> 
+												|--> <a href="#" th:onclick="'javascript:confirmDeleteTurno(\''+ ${turno.id} +'\');'"><i class="fas fa-trash-alt"></i></a>
 												| <!--<a href="#" th:onclick="'javascript:confirmDeleteAll(\''+ ${turno.veterinario} +'\');'">All</a>-->
 													<a href="#" th:href="@{'/recepcionista/deleteAllTurno/'+ ${turno.veterinario}}">All</a>
 											</td>

@@ -45,7 +45,8 @@ public class VeterinarioController {
 		} catch (Exception e) {
 			model.addAttribute("listErrorMessage","El turno no existe!!");
 		}
-		return getAdminAction(model);
+		//return getAdminAction(model);
+		return "redirect:/veterinario";
 	}
 	
 }

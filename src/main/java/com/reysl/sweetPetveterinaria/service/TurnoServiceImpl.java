@@ -22,6 +22,7 @@ public class TurnoServiceImpl implements TurnoService{
 	
 	private boolean checkVetAvailable(Turno turno) throws Exception {	
 		ArrayList<Turno> vetEncontrado = turnoRepository.findByVeterinario(turno.getVeterinario());
+		
 		if (!vetEncontrado.isEmpty()) {
 			throw new Exception("El veterinario no está disponible");
 		}
@@ -32,7 +33,7 @@ public class TurnoServiceImpl implements TurnoService{
 	
 	private boolean checkFechaAvailable(Turno turno) throws Exception {
 		Optional <Turno> fechaEncontrada = turnoRepository.findByFecha(turno.getFecha());
-		if(!fechaEncontrada.isEmpty()) {
+		if(fechaEncontrada.isPresent()) {
 			throw new Exception("La fecha no está disponible");
 		}
 		
@@ -42,7 +43,7 @@ public class TurnoServiceImpl implements TurnoService{
 	
 	private boolean checkHorarioAvailable(Turno turno) throws Exception {
 		Optional <Turno> horarioEncontrado = turnoRepository.findByHorario(turno.getHorario());
-		if(!horarioEncontrado.isEmpty()) {
+		if(horarioEncontrado.isPresent()) {
 			throw new Exception("El horario no está disponible");
 		}
 		
@@ -51,7 +52,7 @@ public class TurnoServiceImpl implements TurnoService{
 
 	@Override
 	public Turno crearTurno(Turno turno) throws Exception{
-		if (checkVetAvailable(turno) || checkFechaAvailable(turno) || checkHorarioAvailable(turno)) {
+		if ( checkFechaAvailable(turno) || checkHorarioAvailable(turno)) {  // checkVetAvailable(turno) 
 			turno = turnoRepository.save(turno);
 		}
 		

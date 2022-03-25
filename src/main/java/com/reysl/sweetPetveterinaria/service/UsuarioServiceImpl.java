@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.reysl.sweetPetveterinaria.entity.Usuario;
 import com.reysl.sweetPetveterinaria.repository.UsuarioRepository;
-
+//103 folio 56
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 	

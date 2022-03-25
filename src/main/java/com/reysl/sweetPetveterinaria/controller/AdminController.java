@@ -149,7 +149,8 @@ public class AdminController {
 		} catch (Exception e) {
 			model.addAttribute("listErrorMessage","El usuario no existe!!");
 		}
-		return getAdminAction(model); // Para mantener el mensaje de error si llega a ocurrir
+		//return getAdminAction(model); // Para mantener el mensaje de error si llega a ocurrir
+		return "redirect:/admin";
 	}
 	
 	@GetMapping("/admin/editProducto/{id}")
@@ -163,6 +164,7 @@ public class AdminController {
 		model.addAttribute("editProductMode", "true");
 		
 		return "admin/vista-admin";
+		//return "redirect:/admin";
 	
 	}
 	
@@ -199,7 +201,8 @@ public class AdminController {
 		} catch (Exception e) {
 			model.addAttribute("listErrorMessage","El producto no existe!!");
 		}
-		return getAdminAction(model);
+		//return getAdminAction(model);
+		return "redirect:/admin";
 	}
 	
 	@GetMapping("/admin/usuarioForm/cancel")
